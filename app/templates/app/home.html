@@ -1,0 +1,31 @@
+{% extends 'app/base.html' %}
+
+{% block contenido %}
+
+{% load static %}
+
+{% load humanize %}
+<h2>Productos</h2>
+<div class="productos">
+    <div class="row">
+    {% for p in productos %}
+        <div class="producto col-3"> 
+
+            <div id="contenedor_producto" class="card">
+
+                {% if p.imagen %}
+                <img src="{{ p.imagen }}" alt="imagen producto">
+                {% endif %}
+                <div class="detalle">
+                    <h5>{{ p.marca | capfirst }}</h5>
+                    <h2>{{ p.nombre | title }}</h2>
+                    <h3>${{ p.precio | intcomma }}</h3>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+</div>
+    
+
+{% endblock %}
